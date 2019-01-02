@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "cezar",
+    "alias": ["cezar.sh"],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "status": 301,
+            "headers": { "Location": "https://medium.com/@cezarsampaio" }
+        }
+    ]
+}

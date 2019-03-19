@@ -1,7 +1,7 @@
 {
     "version": 2,
     "name": "cezar",
-    "alias": ["cezar.sh"],
+    "alias": ["cezar.sh", "cezarsampaio.dev"],
     "routes": [
         {
             "src": "/(.*)",

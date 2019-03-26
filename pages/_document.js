@@ -16,7 +16,9 @@ class AppDocument extends NextDocument {
                     />
                     <meta name="robots" content="index, follow" />
                     <meta charSet="utf-8" />
-                    <style jsx global>{`
+                    <style
+                        dangerouslySetInnerHTML={{
+                            __html: `
                         * {
                             margin: 0;
                             padding: 0;
@@ -42,7 +44,9 @@ class AppDocument extends NextDocument {
                         a {
                             transition: color 100ms;
                         }
-                    `}</style>
+                    `,
+                        }}
+                    />
                 </Head>
                 <body>
                     <Main />

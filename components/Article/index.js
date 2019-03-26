@@ -211,6 +211,11 @@ function Article(props) {
                     .article__title {
                         font-size: 32px;
                     }
+
+                    .article__content {
+                        margin-top: 25px;
+                        padding-top: 25px;
+                    }
                 }
             `}</style>
         </article>

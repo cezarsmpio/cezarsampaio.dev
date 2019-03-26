@@ -110,7 +110,12 @@ function MenuList() {
                 }
 
                 .menu__list-item:not(:first-child) {
-                    margin-left: 15px;
+
+                }
+
+                .menu__list-item:not(:first-child):before {
+                    content: '•';
+                    margin: 0 8px;
                 }
 
                 .menu__anchor {
@@ -125,7 +130,7 @@ function MenuList() {
 
                 @media screen and (max-width: 768px) {
                     .menu {
-                        margin-top: 15px;
+                        margin-top: 0;
                     }
                 }
             `}</style>

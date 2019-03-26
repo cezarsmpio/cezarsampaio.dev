@@ -8,12 +8,13 @@ class AppDocument extends NextDocument {
 
     render() {
         return (
-            <Html>
+            <Html lang="en-us">
                 <Head>
                     <meta
                         name="viewport"
                         content="width=device-width, user-scalable=no"
                     />
+                    <meta name="robots" content="index, follow" />
                     <meta charSet="utf-8" />
                     <style jsx global>{`
                         * {

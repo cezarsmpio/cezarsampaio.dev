@@ -10,7 +10,18 @@ function Index(props) {
     return (
         <Wrap>
             <Head>
-                <title>Cezar Sampaio</title>
+                <title>
+                    Cezar Sampaio - Randomly writing about lovely things
+                </title>
+                <meta
+                    name="description"
+                    content="Blog of Cezar Sampaio, mainly talking about development, photography, people management, daily life and so on."
+                />
+                <meta
+                    name="keywords"
+                    content="cezar sampaio, cezar, blog, development, frontend, backend, photography, people, management"
+                />
+                <link rel="canonical" href="https://cezarsampaio.dev" />
             </Head>
 
             <Header />

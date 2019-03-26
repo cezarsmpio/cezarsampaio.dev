@@ -11,10 +11,23 @@ import frontMatter from '../utils/front-matter';
 function Post(props) {
     if (!props.post) return <Error statusCode={404} />;
 
+    const { attributes: attr } = props.post;
+
     return (
         <Wrap>
             <Head>
-                <title>{props.post.attributes.title} | Cezar Sampaio</title>
+                <title>{attr.title} | Cezar Sampaio</title>
+                <meta
+                    name="description"
+                    content={`${attr.title} - ${attr.preview}`}
+                />
+                {attr.keywords && (
+                    <meta name="keywords" content={attr.keywords.join(',')} />
+                )}
+                <link
+                    rel="canonical"
+                    href={`https://cezarsampaio.dev/p/${attr.slug}`}
+                />
             </Head>
 
             <Header />
@@ -24,7 +37,7 @@ function Post(props) {
 
                 <div className="see-all">
                     <Link href="/" passHref prefetch>
-                        <a>← see al posts</a>
+                        <a>← see all posts</a>
                     </Link>
                 </div>
             </main>

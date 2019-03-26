@@ -1,0 +1,35 @@
+{
+    "name": "cezar.sh",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next",
+        "analyze": "BUNDLE_ANALYZE=both npm run build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/cezarsmpio/cezar.sh.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/cezarsmpio/cezar.sh/issues"
+    },
+    "homepage": "https://github.com/cezarsmpio/cezar.sh#readme",
+    "dependencies": {
+        "@zeit/next-bundle-analyzer": "^0.1.2",
+        "marked": "^0.6.1",
+        "next": "^8.0.3",
+        "react": "^16.8.4",
+        "react-dom": "^16.8.4",
+        "tiny-frontmatter": "^1.0.0"
+    },
+    "devDependencies": {
+        "raw-loader": "^2.0.0"
+    }
+}

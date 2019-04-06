@@ -1,18 +1,26 @@
 import Head from 'next/head';
+import { withRouter } from 'next/router';
 import importAll from '../utils/import-all';
 import { withReadingTime } from '../utils/post-utils';
 import frontMatter from '../utils/front-matter';
 import Posts from '../components/Posts';
 import Header from '../components/Header';
 import Wrap from '../components/Wrap';
+import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
 
 function Index(props) {
+    const pageTitle = 'Cezar Sampaio - Randomly writing about lovely things';
+
+    withGoogleAnalyticsPageView({
+        page_location: props.router.asPath,
+        page_path: props.router.asPath,
+        page_title: pageTitle,
+    });
+
     return (
         <Wrap>
             <Head>
-                <title>
-                    Cezar Sampaio - Randomly writing about lovely things
-                </title>
+                <title>{pageTitle}</title>
                 <meta
                     name="description"
                     content="Blog of Cezar Sampaio, mainly talking about development, photography, people management, daily life and so on."
@@ -41,4 +49,4 @@ Index.getInitialProps = async function() {
     return { posts };
 };
 
-export default Index;
+export default withRouter(Index);

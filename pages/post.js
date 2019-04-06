@@ -1,26 +1,33 @@
 import Error from 'next/error';
 import Link from 'next/link';
 import Head from 'next/head';
+import { withRouter } from 'next/router';
 import { withParsedHtml, withReadingTime } from '../utils/post-utils';
 import importAll from '../utils/import-all';
 import Article from '../components/Article';
 import Wrap from '../components/Wrap';
 import Header from '../components/Header';
 import frontMatter from '../utils/front-matter';
+import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
 
 function Post(props) {
     if (!props.post) return <Error statusCode={404} />;
 
     const { attributes: attr } = props.post;
+    const pageTitle = `${attr.title} | Cezar Sampaio`;
+    const pageDescription = `${attr.title} - ${attr.preview}`;
+
+    withGoogleAnalyticsPageView({
+        page_location: props.router.asPath,
+        page_path: props.router.asPath,
+        page_title: pageTitle,
+    });
 
     return (
         <Wrap>
             <Head>
-                <title>{attr.title} | Cezar Sampaio</title>
-                <meta
-                    name="description"
-                    content={`${attr.title} - ${attr.preview}`}
-                />
+                <title>{pageTitle}</title>
+                <meta name="description" content={pageDescription} />
                 {attr.keywords && (
                     <meta name="keywords" content={attr.keywords.join(',')} />
                 )}
@@ -75,4 +82,4 @@ Post.getInitialProps = async function(props) {
     return { post };
 };
 
-export default Post;
+export default withRouter(Post);

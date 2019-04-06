@@ -58,6 +58,23 @@ class AppDocument extends NextDocument {
                         href="https://fonts.googleapis.com/css?family=Merriweather:400,900"
                         rel="stylesheet"
                     />
+                    <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${
+                            process.env.googleAnalyticsId
+                        }`}
+                    />
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag(){dataLayer.push(arguments);}
+                                gtag('js', new Date());
+                                gtag('config', '${
+                                    process.env.googleAnalyticsId
+                                }');`,
+                        }}
+                    />
                 </body>
             </Html>
         );

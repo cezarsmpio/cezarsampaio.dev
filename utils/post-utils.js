@@ -5,10 +5,13 @@ export function withReadingTime(post) {
     return {
         ...post,
         readingTime: readingTime(post.body),
-        body: undefined,
     };
 }
 
 export function withParsedHtml(post) {
-    return { ...post, html: marked(post.body), body: undefined };
+    return { ...post, html: marked(post.body) };
+}
+
+export function withNoBody(post) {
+    return { ...post, body: undefined };
 }

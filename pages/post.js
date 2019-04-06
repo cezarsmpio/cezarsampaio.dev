@@ -2,8 +2,11 @@ import Error from 'next/error';
 import Link from 'next/link';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import { withParsedHtml, withReadingTime } from '../utils/post-utils';
-import importAll from '../utils/import-all';
+import {
+    withParsedHtml,
+    withReadingTime,
+    withNoBody,
+} from '../utils/post-utils';
 import frontMatter from '../utils/front-matter';
 import compose from '../utils/compose';
 import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
@@ -78,6 +81,7 @@ Post.getInitialProps = async function(props) {
 
         return {
             post: compose(
+                withNoBody,
                 withReadingTime,
                 withParsedHtml,
                 frontMatter,

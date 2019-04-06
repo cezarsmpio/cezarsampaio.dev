@@ -39,6 +39,8 @@ class AppDocument extends NextDocument {
                             color: var(--text);
                             -webkit-font-smoothing: antialiased;
                             -moz-osx-font-smoothing: grayscale;
+
+                            border-top: 10px solid var(--primary);
                         }
 
                         a {

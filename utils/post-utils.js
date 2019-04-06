@@ -5,15 +5,10 @@ export function withReadingTime(post) {
     return {
         ...post,
         readingTime: readingTime(post.body),
+        body: undefined,
     };
 }
 
 export function withParsedHtml(post) {
-    return { ...post, html: marked(post.body) };
-}
-
-export function withSyntaxHighlighter(post) {
-    return {
-        ...post,
-    };
+    return { ...post, html: marked(post.body), body: undefined };
 }

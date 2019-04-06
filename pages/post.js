@@ -4,11 +4,12 @@ import Head from 'next/head';
 import { withRouter } from 'next/router';
 import { withParsedHtml, withReadingTime } from '../utils/post-utils';
 import importAll from '../utils/import-all';
+import frontMatter from '../utils/front-matter';
+import compose from '../utils/compose';
+import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
 import Article from '../components/Article';
 import Wrap from '../components/Wrap';
 import Header from '../components/Header';
-import frontMatter from '../utils/front-matter';
-import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
 
 function Post(props) {
     if (!props.post) return <Error statusCode={404} />;
@@ -72,14 +73,19 @@ function Post(props) {
 }
 
 Post.getInitialProps = async function(props) {
-    const post = await import('../posts/' + props.query.slug + '.md')
-        .then(post => post.default)
-        .then(frontMatter)
-        .then(withParsedHtml)
-        .then(withReadingTime)
-        .catch(() => false);
+    try {
+        const post = require('../posts/' + props.query.slug + '.md').default;
 
-    return { post };
+        return {
+            post: compose(
+                withReadingTime,
+                withParsedHtml,
+                frontMatter,
+            )(post),
+        };
+    } catch (err) {
+        return { post: false };
+    }
 };
 
 export default withRouter(Post);

@@ -372,7 +372,13 @@ Yes, of course! [You can check the repository](https://github.com/cezarsmpio/cez
     "tiny-frontmatter": "^1.0.0"
 },
 "devDependencies": {
-    "raw-loader": "^2.0.0"
+    "raw-loader": "^2.0.0",
+    "imagemin-gifsicle": "^6.0.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-optipng": "^6.0.0",
+    "next-compose-plugins": "^2.1.1",
+    "next-optimized-images": "^2.4.0",
+    "@zeit/next-bundle-analyzer": "^0.1.2"
 }
 ```
 

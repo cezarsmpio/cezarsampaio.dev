@@ -22,7 +22,6 @@
     },
     "homepage": "https://github.com/cezarsmpio/cezar.sh#readme",
     "dependencies": {
-        "@zeit/next-bundle-analyzer": "^0.1.2",
         "marked": "^0.6.1",
         "next": "^8.0.3",
         "react": "^16.8.4",
@@ -30,6 +29,12 @@
         "tiny-frontmatter": "^1.0.0"
     },
     "devDependencies": {
-        "raw-loader": "^2.0.0"
+        "raw-loader": "^2.0.0",
+        "imagemin-gifsicle": "^6.0.1",
+        "imagemin-mozjpeg": "^8.0.0",
+        "imagemin-optipng": "^6.0.0",
+        "next-compose-plugins": "^2.1.1",
+        "next-optimized-images": "^2.4.0",
+        "@zeit/next-bundle-analyzer": "^0.1.2"
     }
 }

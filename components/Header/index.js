@@ -5,7 +5,7 @@ function AvtarIntro() {
         <div className="avatar">
             <div className="avatar__intro">
                 <img
-                    src="/static/cezar-sampaio.png"
+                    src={require('../../static/cezar-sampaio.png')}
                     width="120"
                     height="120"
                     alt="Picture of the author of this blog, Cezar Sampaio."
@@ -110,7 +110,6 @@ function MenuList() {
                 }
 
                 .menu__list-item:not(:first-child) {
-
                 }
 
                 .menu__list-item:not(:first-child):before {

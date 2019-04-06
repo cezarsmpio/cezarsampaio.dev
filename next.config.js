@@ -1,6 +1,8 @@
+const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const withOptimizedImages = require('next-optimized-images');
 
-module.exports = withBundleAnalyzer({
+module.exports = withPlugins([withBundleAnalyzer, withOptimizedImages], {
     target: 'serverless',
 
     env: {

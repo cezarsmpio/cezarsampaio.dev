@@ -43,6 +43,7 @@ function Index(props) {
 
 Index.getInitialProps = async function() {
     const posts = importAll(require.context('../posts/', true, /\.md$/))
+        .reverse()
         .map(frontMatter)
         .map(withReadingTime);
 

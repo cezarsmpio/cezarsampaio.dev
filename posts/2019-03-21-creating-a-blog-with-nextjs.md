@@ -3,18 +3,7 @@ title: Creating a blog with Next.js
 created_at: 2019-03-21
 preview: How I have overcreated this blog just for fun.
 slug: 2019-03-21-creating-a-blog-with-nextjs
-keywords:
-    [
-        nextjs,
-        blog,
-        webpack,
-        javascript,
-        overengineering,
-        express,
-        nodejs,
-        api,
-        static,
-    ]
+keywords: [nextjs, blog, webpack, javascript, overengineering, express, nodejs, api, static]
 ---
 
 That's my first post on my new blog, I have written other stories on [my Medium profile](https://medium.com/@cezarsampaio 'Medium profile of Cezar Sampaio.').
@@ -207,6 +196,7 @@ The homepage `getInitialProps` looks like:
 ```js
 Index.getInitialProps = async function() {
     const posts = importAll(require.context('../posts/', true, /\.md$/))
+        .reverse() // ordering them from most recent to oldest
         .map(frontMatter)
         .map(withReadingTime);
 
@@ -227,7 +217,7 @@ The attributes of this post you are just reading look like:
 title: Creating a blog with Next.js
 created_at: 2019-03-21
 preview: How I have overcreated this blog just for fun.
-slug: creating-a-blog-with-nextjs
+slug: 2019-03-21-creating-a-blog-with-nextjs
 keywords: [nextjs, blog, webpack, javascript, overengineering, express, nodejs, api, static]
 ---
 ```
@@ -311,9 +301,9 @@ Not yet...
 
 To have more fun I created a tool to automatically create a post with the format that I need to give support. I need to follow some rules:
 
-* The slug should have the same name of the file.
-* I need to have at least the `title`, `keywords` and `preview` as props.
-* It needs to support the front matter format.
+-   The slug should have the same name of the file.
+-   I need to have at least the `title`, `keywords` and `preview` as props.
+-   It needs to support the front matter format.
 
 For that, I created a executable file called `cli.js`. (You can find the content here)[https://github.com/cezarsmpio/cezar.sh/blob/master/cli.js].
 

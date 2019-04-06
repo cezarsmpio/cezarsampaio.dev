@@ -8,7 +8,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next",
-        "analyze": "BUNDLE_ANALYZE=both npm run build"
+        "analyze": "BUNDLE_ANALYZE=both npm run build",
+        "deploy": "now --target production"
     },
     "repository": {
         "type": "git",

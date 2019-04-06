@@ -41,7 +41,9 @@ Object.keys(rules).forEach(function(key) {
 const file = `${postsFolder}/${today}-${slugify(attributes['title'].value)}.md`;
 
 if (fs.existsSync(file)) {
-    console.error('This post already exists! Create one with a different name.');
+    console.error(
+        'This post already exists! Create one with a different name.',
+    );
     return;
 }
 
@@ -55,7 +57,7 @@ ${Object.values(attributes)
         return `${attr.name}: ${attr.value}\n`;
     })
     .join('')}
-slug: ${slugify(attributes['title'].value)}
+slug: ${today}-${slugify(attributes['title'].value)}
 created_at: ${today}
 ---
 

@@ -72,12 +72,12 @@ function Post(props) {
 }
 
 Post.getInitialProps = async function(props) {
-    const posts = importAll(require.context('../posts/', true, /\.md$/))
-        .map(frontMatter)
-        .map(withParsedHtml)
-        .map(withReadingTime);
-
-    const post = posts.find(post => post.attributes.slug === props.query.slug);
+    const post = await import('../posts/' + props.query.slug + '.md')
+        .then(post => post.default)
+        .then(frontMatter)
+        .then(withParsedHtml)
+        .then(withReadingTime)
+        .catch(() => false);
 
     return { post };
 };

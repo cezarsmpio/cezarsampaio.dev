@@ -65,12 +65,6 @@ function Post(props) {
 }
 
 Post.getInitialProps = async function(props) {
-    // const { data: post } = await axios.get(
-    //     `http://localhost:3000/api/posts/${props.query.slug}`,
-    // );
-
-    // return { post };
-
     const posts = importAll(require.context('../posts/', true, /\.md$/))
         .map(frontMatter)
         .map(withParsedHtml)

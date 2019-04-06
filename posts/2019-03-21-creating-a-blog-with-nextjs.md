@@ -198,7 +198,8 @@ Index.getInitialProps = async function() {
     const posts = importAll(require.context('../posts/', true, /\.md$/))
         .reverse() // ordering them from most recent to oldest
         .map(frontMatter)
-        .map(withReadingTime);
+        .map(withReadingTime)
+        .map(withNoBody);
 
     return { posts };
 };
@@ -260,18 +261,24 @@ export function withReadingTime(post) {
 
 After that, I was happy with I had. It was time to load a single post.
 
-On the post page, I receive the slug from the post then I find a post that matches with that value. This is what I have:
+On the post page, I receive the slug from the post then I find a post that matches with that value. In case I can import the file, I return a `false` post to show the `404` page.
 
 ```js
 Post.getInitialProps = async function(props) {
-    const post = await import('../posts/' + props.query.slug + '.md')
-        .then(post => post.default)
-        .then(frontMatter)
-        .then(withParsedHtml)
-        .then(withReadingTime)
-        .catch(() => false);
+    try {
+        const post = require('../posts/' + props.query.slug + '.md').default;
 
-    return { post };
+        return {
+            post: compose(
+                withNoBody,
+                withReadingTime,
+                withParsedHtml,
+                frontMatter,
+            )(post),
+        };
+    } catch (err) {
+        return { post: false };
+    }
 };
 ```
 

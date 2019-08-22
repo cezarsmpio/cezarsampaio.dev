@@ -22,7 +22,8 @@
     },
     "homepage": "https://github.com/cezarsmpio/cezarsampaio.dev#readme",
     "dependencies": {
-        "marked": "^0.6.1",
+        "lodash": "^4.17.15",
+        "marked": "^0.7.0",
         "next": "^9.0.4",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",

@@ -1,5 +1,5 @@
 {
-    "name": "cezar.sh",
+    "name": "cezarsampaio.dev",
     "version": "1.0.0",
     "description": "",
     "scripts": {
@@ -12,18 +12,18 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/cezarsmpio/cezar.sh.git"
+        "url": "git+https://github.com/cezarsmpio/cezarsampaio.dev.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/cezarsmpio/cezar.sh/issues"
+        "url": "https://github.com/cezarsmpio/cezarsampaio.dev/issues"
     },
-    "homepage": "https://github.com/cezarsmpio/cezar.sh#readme",
+    "homepage": "https://github.com/cezarsmpio/cezarsampaio.dev#readme",
     "dependencies": {
         "marked": "^0.6.1",
-        "next": "^8.0.3",
+        "next": "^9.0.4",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "tiny-frontmatter": "^1.0.0"

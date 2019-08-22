@@ -6,13 +6,13 @@ import {
     withParsedHtml,
     withReadingTime,
     withNoBody,
-} from '../utils/post-utils';
-import frontMatter from '../utils/front-matter';
-import compose from '../utils/compose';
-import withGoogleAnalyticsPageView from '../hooks/withGoogleAnalytics';
-import Article from '../components/Article';
-import Wrap from '../components/Wrap';
-import Header from '../components/Header';
+} from '../../utils/post-utils';
+import frontMatter from '../../utils/front-matter';
+import compose from '../../utils/compose';
+import withGoogleAnalyticsPageView from '../../hooks/withGoogleAnalytics';
+import Article from '../../components/Article';
+import Wrap from '../../components/Wrap';
+import Header from '../../components/Header';
 
 function Post(props) {
     if (!props.post) return <Error statusCode={404} />;
@@ -77,7 +77,7 @@ function Post(props) {
 
 Post.getInitialProps = async function(props) {
     try {
-        const post = require('../posts/' + props.query.slug + '.md').default;
+        const post = require('../../posts/' + props.query.slug + '.md').default;
 
         return {
             post: compose(

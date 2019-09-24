@@ -37,7 +37,7 @@ function Post(props) {
                 )}
                 <link
                     rel="canonical"
-                    href={`https://cezarsampaio.dev/p/${attr.slug}`}
+                    href={`https://cezarsampaio.dev/post/${attr.slug}`}
                 />
             </Head>
 

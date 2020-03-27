@@ -7,7 +7,7 @@ function PostPreview(props) {
     return (
         <section className="preview">
             <h1 className="preview__title">
-                <Link href={`/post/${fields.slug}`} passHref prefetch>
+                <Link href={`/post/${fields.slug}`} passHref>
                     <a className="preview__link" title={fields.title}>
                         {fields.title}
                     </a>

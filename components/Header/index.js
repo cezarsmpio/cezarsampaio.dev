@@ -13,7 +13,7 @@ function AvtarIntro() {
             </div>
             <div className="avatar__group">
                 <h1 className="avatar__name">
-                    <Link href="/" passHref prefetch>
+                    <Link href="/" passHref>
                         <a title="Go back home">Cezar Sampaio</a>
                     </Link>
                 </h1>

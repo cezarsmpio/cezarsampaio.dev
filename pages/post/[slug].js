@@ -41,7 +41,7 @@ function Post(props) {
                 <Article {...props.post} />
 
                 <div className="see-all">
-                    <Link href="/" passHref prefetch>
+                    <Link href="/" passHref>
                         <a>← see all posts</a>
                     </Link>
                 </div>

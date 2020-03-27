@@ -22,20 +22,19 @@
     },
     "homepage": "https://github.com/cezarsmpio/cezarsampaio.dev#readme",
     "dependencies": {
+        "contentful": "^7.14.0",
         "lodash": "^4.17.15",
         "marked": "^0.7.0",
         "next": "^9.0.4",
         "react": "^16.8.4",
-        "react-dom": "^16.8.4",
-        "tiny-frontmatter": "^1.0.0"
+        "react-dom": "^16.8.4"
     },
     "devDependencies": {
-        "raw-loader": "^2.0.0",
+        "@zeit/next-bundle-analyzer": "^0.1.2",
         "imagemin-gifsicle": "^6.0.1",
         "imagemin-mozjpeg": "^8.0.0",
         "imagemin-optipng": "^6.0.0",
         "next-compose-plugins": "^2.1.1",
-        "next-optimized-images": "^2.4.0",
-        "@zeit/next-bundle-analyzer": "^0.1.2"
+        "next-optimized-images": "^2.4.0"
     }
 }

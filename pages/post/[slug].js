@@ -2,13 +2,7 @@ import Error from 'next/error';
 import Link from 'next/link';
 import Head from 'next/head';
 import { withRouter } from 'next/router';
-import {
-    withParsedHtml,
-    withReadingTime,
-    withNoBody,
-} from '../../utils/post-utils';
-import frontMatter from '../../utils/front-matter';
-import compose from '../../utils/compose';
+import { createClient } from 'contentful';
 import withGoogleAnalyticsPageView from '../../hooks/withGoogleAnalytics';
 import Article from '../../components/Article';
 import Wrap from '../../components/Wrap';
@@ -17,9 +11,9 @@ import Header from '../../components/Header';
 function Post(props) {
     if (!props.post) return <Error statusCode={404} />;
 
-    const { attributes: attr } = props.post;
-    const pageTitle = `${attr.title} | Cezar Sampaio`;
-    const pageDescription = `${attr.title} - ${attr.preview}`;
+    const { fields, sys } = props.post;
+    const pageTitle = `${fields.title} | Cezar Sampaio`;
+    const pageDescription = `${fields.title} - ${fields.shortDescription}`;
 
     withGoogleAnalyticsPageView({
         page_location: props.router.asPath,
@@ -32,12 +26,12 @@ function Post(props) {
             <Head>
                 <title>{pageTitle}</title>
                 <meta name="description" content={pageDescription} />
-                {attr.keywords && (
-                    <meta name="keywords" content={attr.keywords.join(',')} />
+                {fields.keywords && (
+                    <meta name="keywords" content={fields.keywords} />
                 )}
                 <link
                     rel="canonical"
-                    href={`https://cezarsampaio.dev/post/${attr.slug}`}
+                    href={`https://cezarsampaio.dev/post/${fields.slug}`}
                 />
             </Head>
 
@@ -77,16 +71,17 @@ function Post(props) {
 
 Post.getInitialProps = async function(props) {
     try {
-        const post = require('../../posts/' + props.query.slug + '.md').default;
-
-        return {
-            post: compose(
-                withNoBody,
-                withReadingTime,
-                withParsedHtml,
-                frontMatter,
-            )(post),
-        };
+        const blog = createClient({
+            space: process.env.contentfulBlogSpaceId,
+            accessToken: process.env.contentfulAccessToken,
+        });
+    
+        const posts = await blog.getEntries({
+            content_type: 'post',
+            'fields.slug': props.query.slug,
+        });
+    
+        return { post: posts.items[0] };
     } catch (err) {
         return { post: false };
     }

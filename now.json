@@ -1,6 +1,6 @@
 {
     "version": 2,
     "name": "cezar",
-    "alias": ["cezar.sh", "cezarsampaio.dev"],
+    "alias": ["cezarsampaio.dev"],
     "builds": [{ "src": "package.json", "use": "@now/next" }]
 }

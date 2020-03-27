@@ -1,3 +1,6 @@
+import marked from 'marked';
+import readingTime from '../../utils/reading-time';
+
 function ArticleContent(props) {
     return (
         <>
@@ -154,25 +157,25 @@ function ArticleContent(props) {
 }
 
 function Article(props) {
-    const { attributes: attr } = props;
+    const { fields } = props;
 
     return (
         <article className="article">
-            <h1 className="article__title">{attr.title}</h1>
-            <p className="article__desc">{attr.preview}</p>
+            <h1 className="article__title">{fields.title}</h1>
+            <p className="article__desc">{fields.shortDescription}</p>
             <p className="article__meta">
                 <time>
-                    {new Date(attr.created_at).toLocaleDateString('en', {
+                    {new Date(fields.date).toLocaleDateString('en', {
                         month: 'long',
                         day: 'numeric',
                     })}
                 </time>
                 <span> - </span>
-                <span>{props.readingTime} min read</span>
+                <span>{readingTime(fields.content)} min read</span>
             </p>
 
             <div className="article__content">
-                <ArticleContent>{props.html}</ArticleContent>
+                <ArticleContent>{marked(fields.content)}</ArticleContent>
             </div>
 
             <style jsx>{`

@@ -7,17 +7,8 @@ module.exports = withPlugins([withBundleAnalyzer, withOptimizedImages], {
 
     env: {
         googleAnalyticsId: 'UA-134779745-3',
-    },
-
-    webpack: config => {
-        config.module.rules.push({
-            test: /\.md$/i,
-            loader: ['raw-loader'],
-        });
-
-        // config.context = path.resolve(__dirname, './posts');
-
-        return config;
+        contentfulBlogSpaceId: 'tfgdru8v1edq',
+        contentfulAccessToken: 'AUAIkpiyecPJn1dl0qCrerXTsM0N1RdvQWQioLIXWu8',
     },
 
     analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),

@@ -1,8 +1,6 @@
 import Head from 'next/head';
+import { createClient } from 'contentful';
 import { withRouter } from 'next/router';
-import importAll from '../utils/import-all';
-import { withReadingTime, withNoBody } from '../utils/post-utils';
-import frontMatter from '../utils/front-matter';
 import Posts from '../components/Posts';
 import Header from '../components/Header';
 import Wrap from '../components/Wrap';
@@ -42,13 +40,17 @@ function Index(props) {
 }
 
 Index.getInitialProps = async function() {
-    const posts = importAll(require.context('../posts/', true, /\.md$/))
-        .reverse()
-        .map(frontMatter)
-        .map(withReadingTime)
-        .map(withNoBody);
+    const blog = createClient({
+        space: process.env.contentfulBlogSpaceId,
+        accessToken: process.env.contentfulAccessToken,
+    });
 
-    return { posts };
+    const posts = await blog.getEntries({
+        content_type: 'post',
+        order: '-fields.date'
+    });
+
+    return { posts: posts.items };
 };
 
 export default withRouter(Index);

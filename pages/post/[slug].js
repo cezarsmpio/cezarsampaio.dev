@@ -69,7 +69,28 @@ function Post(props) {
     );
 }
 
-Post.getInitialProps = async function(props) {
+export async function getStaticPaths() {
+    const blog = createClient({
+        space: process.env.contentfulBlogSpaceId,
+        accessToken: process.env.contentfulAccessToken,
+    });
+
+    const posts = await blog.getEntries({
+        content_type: 'post',
+        order: '-fields.date'
+    });
+
+    return { 
+        paths: posts.items.map(post => ({
+            params: {
+                slug: post.fields.slug
+            }
+        })),
+        fallback: false
+    };
+}
+
+export async function getStaticProps(props) {
     try {
         const blog = createClient({
             space: process.env.contentfulBlogSpaceId,
@@ -78,12 +99,20 @@ Post.getInitialProps = async function(props) {
     
         const posts = await blog.getEntries({
             content_type: 'post',
-            'fields.slug': props.query.slug,
+            'fields.slug': props.params.slug,
         });
-    
-        return { post: posts.items[0] };
+
+        return { 
+            props: {
+                post: posts.items[0]
+            } 
+        };
     } catch (err) {
-        return { post: false };
+        return { 
+            props: {
+                post: false 
+            }
+        };
     }
 };
 

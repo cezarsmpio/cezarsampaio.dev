@@ -39,7 +39,7 @@ function Index(props) {
     );
 }
 
-Index.getInitialProps = async function() {
+export async function getStaticProps() {
     const blog = createClient({
         space: process.env.contentfulBlogSpaceId,
         accessToken: process.env.contentfulAccessToken,
@@ -50,7 +50,11 @@ Index.getInitialProps = async function() {
         order: '-fields.date'
     });
 
-    return { posts: posts.items };
+    return { 
+        props: { 
+            posts: posts.items
+        }
+    };
 };
 
 export default withRouter(Index);

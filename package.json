@@ -23,7 +23,7 @@
     "homepage": "https://github.com/cezarsmpio/cezarsampaio.dev#readme",
     "dependencies": {
         "contentful": "^7.14.0",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.21",
         "marked": "^0.7.0",
         "next": "^9.3.5",
         "react": "^16.13.1",

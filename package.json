@@ -24,7 +24,7 @@
     "dependencies": {
         "contentful": "^7.14.0",
         "lodash": "^4.17.15",
-        "marked": "^0.7.0",
+        "marked": "^4.0.10",
         "next": "^9.3.5",
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
